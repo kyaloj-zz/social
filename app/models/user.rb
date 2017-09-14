@@ -1,5 +1,7 @@
 # users
 class User < ApplicationRecord
+  has_secure_password
+  validates :email, presence: true, uniqueness: true
   has_many :leaders, class_name: 'Subscription',
                      foreign_key: :follower_id,
                      dependent: :destroy
