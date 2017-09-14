@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :followers, class_name: 'Subscription',
                        foreign_key: :leader_id,
                        dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :text_posts, dependent: :destroy
+  has_many :image_posts, dependent: :destroy
 
   def following?(leader)
     leaders.include? leader
