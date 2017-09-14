@@ -1,8 +1,11 @@
 # users
 class User < ApplicationRecord
-  has_many :subscriptions, foreign_key: :follower_id,
-                           dependent: :destroy
-  has_many :leaders, through: :subscriptions
+  has_many :leaders, class_name: 'Subscription',
+                     foreign_key: :follower_id,
+                     dependent: :destroy
+  has_many :followers, class_name: 'Subscription',
+                       foreign_key: :leader_id,
+                       dependent: :destroy
 
   def following?(leader)
     leaders.include? leader
