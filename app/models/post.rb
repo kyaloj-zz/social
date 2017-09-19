@@ -9,4 +9,8 @@ class Post < ApplicationRecord
       comments.size
     end
   end
+
+  def as_json(_options = {})
+    super(only: [:id, :title])
+  end
 end
