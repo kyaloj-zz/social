@@ -1,0 +1,7 @@
+<div class="page-header">
+<h1>User</h1>
+</div>
+<p class="lead"><%= @user.email %></p>
+  <% if @user == current_user %>
+<p class="lead">API Token: <%= @user.api_token %></p>
+<% end %>
