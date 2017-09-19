@@ -1,7 +1,11 @@
+require 'application_responder'
 #
-class ApiController < ApplicationController
-  skip_before_filter :authenticate_user!
+class ApiController < ActionController::Base
+  protect_from_forgery with: :null_session
+  self.responder = ApplicationResponder
   before_filter :authenticate_token!
+  include ActionController::MimeResponds
+  respond_to :json
 
   private
 

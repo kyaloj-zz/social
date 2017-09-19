@@ -1,11 +1,7 @@
-require "application_responder"
-
 #
 class ApplicationController < ActionController::Base
-  self.responder = ApplicationResponder
   protect_from_forgery with: :exception
   before_action :authenticate_user!
-  include ActionController::MimeResponds
 
   private
 
