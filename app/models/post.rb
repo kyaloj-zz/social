@@ -10,10 +10,10 @@ class Post < ApplicationRecord
     end
   end
 
-  def as_json(_options = {})
-    super(only: [:id, :title],
-          except: [:user_id],
-          include: :user,
-          methods: :cached_comment_count)
-  end
+  # def as_json(_options = {})
+  #   super(only: [:id, :title],
+  #         except: [:user_id],
+  #         include: :user,
+  #         methods: :cached_comment_count)
+  # end
 end
